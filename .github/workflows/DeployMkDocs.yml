@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+    - name: Install mkdocs
+      run: pip install --upgrade pip
+           pip install mkdocs
+           pip install mkdocs-material
+           pip install mkdocs-git-authors-plugin
+           pip install mkdocs-git-revision-date-localized-plugin
+           pip install mkdocs-git-committers-plugin
+           pip install mkdocs-glightbox
+           pip install mkdocs-img2fig-plugin
+           pip install mkdocs-mermaid2-plugin
+    - name: Build
+      run: mkdocs build
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      #with:
+        # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        #publish_dir: ./site
