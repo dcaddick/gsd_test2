@@ -24,10 +24,10 @@ jobs:
            pip install mkdocs-glightbox
            pip install mkdocs-img2fig-plugin
            pip install mkdocs-mermaid2-plugin
-           pip install mkdocs-simple-plugin==2.2.0
+           # pip install mkdocs-simple-plugin==2.2.0
     
     - name: Build and push docs
-      uses: athackst/mkdocs-simple-plugin@v2.2.2
+      uses: athackst/mkdocs-simple-plugin@v2.2.0
       with:
         #   # (optional) Specify branch 
         #   publish_branch: main # gh-pages 
